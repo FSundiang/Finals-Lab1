@@ -1,0 +1,52 @@
+<div>
+    <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+
+      <div>
+        <input 
+          type="text" 
+          [(ngModel)]="username" 
+          name="username" 
+          placeholder="Enter your username" 
+          required 
+          #usernameField="ngModel">
+        <div *ngIf="usernameField.invalid && usernameField.touched">
+          <p class="error">Username is required.</p>
+        </div>
+      </div>
+
+      <div>
+        <input 
+          type="email" 
+          [(ngModel)]="email" 
+          name="email" 
+          placeholder="Enter your email" 
+          required 
+          email
+          #emailField="ngModel">
+        <div *ngIf="emailField.invalid && emailField.touched">
+          <p class="error">Please enter a valid email address.</p>
+        </div>
+      </div>
+  
+
+      <div>
+        <input 
+          type="password" 
+          [(ngModel)]="password" 
+          name="password" 
+          placeholder="Enter your password" 
+          required 
+          #passwordField="ngModel">
+        <div *ngIf="passwordField.invalid && passwordField.touched">
+          <p class="error">Password is required.</p>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="signupForm.invalid">Submit</button>
+    </form>
+  
+
+    <p *ngIf="submitted">You have entered: Username: {{ username }}, Email: {{ email }}</p>
+  </div>
+  <router-outlet />
+  
